@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: los-app-service-deployment
+  labels:
+    app: los-app-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: los-app-service
+  template:
+    metadata:
+      labels:
+        app: los-app-service
+    spec:
+      containers:
+        - name: los-app-service-latest
+          image: jaganreddy17/img-repo:los-app-service
+          ports:
+            - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: los-app-service
+  name: los-app-service
+spec:
+  selector:
+    app: los-app-service
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081

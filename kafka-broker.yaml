@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-deployment
+  labels:
+    app: kafka-broker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-broker
+  template:
+    metadata:
+      labels:
+        app: kafka-broker
+    spec:
+      containers:
+        - name: kafka-broker-latest
+          image: bitnami/kafka:latest
+          ports:
+            - containerPort: 9092
+          env:
+            - name: KAFKA_CLIENT_USERS
+              valueFrom:
+                secretKeyRef:
+                  name: env-secrets
+                  key: kafka-user
+            - name: KAFKA_CLIENT_PASSWORDS
+              valueFrom:
+                secretKeyRef:
+                  name: env-secrets
+                  key: kafka-password
+            - name: KAFKA_CONTROLLER_USER
+              valueFrom:
+                secretKeyRef:
+                  name: env-secrets
+                  key: kafka-user
+            - name: KAFKA_CONTROLLER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: env-secrets
+                  key: kafka-password
+            - name: KAFKA_ZOOKEEPER_CONNECT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-configs
+                  key: zookeeper-url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: kafka-service
+  name: kafka-service
+spec:
+  selector:
+    app: kafka-broker
+  ports:
+    - protocol: TCP
+      port: 9092
+      targetPort: 9092
