@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: los-app-service-deployment
+  name: los-app-service
   labels:
     app: los-app-service
 spec:

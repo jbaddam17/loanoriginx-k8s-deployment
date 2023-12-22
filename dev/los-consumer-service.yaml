@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: los-consumer-service-deployment
+  name: los-consumer-service
   labels:
     app: los-consumer-service
 spec:
