@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: env-configs
-data:
-  zookeeper-url: "zookeeper-service:2181"
-  postgres-init-db-name: "loan-originx"
-  mongo-init-db: "application"
