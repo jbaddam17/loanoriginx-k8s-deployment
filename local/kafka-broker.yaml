@@ -52,6 +52,7 @@ metadata:
   labels:
     app: kafka-service
   name: kafka-service
+  namespace: default
 spec:
   selector:
     app: kafka-broker

@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: env-configs
+  namespace: default
 data:
   zookeeper-url: "zookeeper-service:2181"
   postgres-init-db-name: "loan-originx"

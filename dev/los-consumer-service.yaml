@@ -32,6 +32,7 @@ metadata:
   labels:
     app: los-consumer-service
   name: los-consumer-service
+  namespace: default
 spec:
   selector:
     app: los-consumer-service

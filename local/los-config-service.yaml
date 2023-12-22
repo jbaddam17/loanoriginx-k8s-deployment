@@ -32,6 +32,7 @@ metadata:
   labels:
     app: los-config-service
   name: los-config-service
+  namespace: default
 spec:
   selector:
     app: los-config-service
