@@ -16,12 +16,14 @@ spec:
     spec:
       containers:
         - name: los-app-service-latest
-          image: jaganreddy17/img-repo:los-app-service
-          ports:
-            - containerPort: 8081
           env:
             - name: ENVIRONMENT
               value: dev
+          image: jaganreddy17/img-repo:los-app-service
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8081
+              protocol: TCP
 ---
 apiVersion: v1
 kind: Service
