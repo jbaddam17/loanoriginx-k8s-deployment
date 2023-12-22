@@ -14,6 +14,7 @@ spec:
       labels:
         app: los-consumer-service
     spec:
+      serviceAccountName: loan-orginx-admin
       containers:
         - name: los-consumer-service-latest
           env:

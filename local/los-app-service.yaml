@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: los-app-service-deployment
+  name: los-app-service
   labels:
     app: los-app-service
 spec:
@@ -14,14 +14,17 @@ spec:
       labels:
         app: los-app-service
     spec:
+      serviceAccountName: loan-orginx-admin
       containers:
         - name: los-app-service-latest
-          image: jaganreddy17/los-app-service
-          ports:
-            - containerPort: 8081
           env:
             - name: ENVIRONMENT
               value: dev
+          image: jaganreddy17/los-app-service
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8081
+              protocol: TCP
 ---
 apiVersion: v1
 kind: Service

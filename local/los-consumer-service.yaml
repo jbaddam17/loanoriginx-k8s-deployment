@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: los-consumer-service-deployment
+  name: los-consumer-service
   labels:
     app: los-consumer-service
 spec:
@@ -14,14 +14,17 @@ spec:
       labels:
         app: los-consumer-service
     spec:
+      serviceAccountName: loan-orginx-admin
       containers:
         - name: los-consumer-service-latest
-          image: jaganreddy17/los-consumer-service
-          ports:
-            - containerPort: 8082
           env:
             - name: ENVIRONMENT
               value: dev
+          image: jaganreddy17/los-consumer-service
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8082
+              protocol: TCP
 ---
 apiVersion: v1
 kind: Service

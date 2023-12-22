@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: los-config-service-deployment
+  name: los-config-service
   labels:
     app: los-config-service
 spec:
@@ -14,14 +14,17 @@ spec:
       labels:
         app: los-config-service
     spec:
+      serviceAccountName: loan-orginx-admin
       containers:
         - name: los-config-service-latest
-          image: jaganreddy17/los-config-service
-          ports:
-            - containerPort: 8080
           env:
             - name: ENVIRONMENT
               value: dev
+          image: jaganreddy17/los-config-service
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
 ---
 apiVersion: v1
 kind: Service

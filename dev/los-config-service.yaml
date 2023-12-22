@@ -14,6 +14,7 @@ spec:
       labels:
         app: los-config-service
     spec:
+      serviceAccountName: loan-orginx-admin
       containers:
         - name: los-config-service-latest
           env:
