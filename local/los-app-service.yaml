@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: los-app-service-latest
-          image: jaganreddy17/img-repo:los-app-service
+          image: jaganreddy17/los-app-service
           ports:
             - containerPort: 8081
           env:

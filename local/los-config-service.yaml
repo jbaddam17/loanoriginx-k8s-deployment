@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: los-config-service-latest
-          image: jaganreddy17/img-repo:los-config-service
+          image: jaganreddy17/los-config-service
           ports:
             - containerPort: 8080
           env:

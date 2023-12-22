@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: los-consumer-service-latest
-          image: jaganreddy17/img-repo:los-consumer-service
+          image: jaganreddy17/los-consumer-service
           ports:
             - containerPort: 8082
           env:
